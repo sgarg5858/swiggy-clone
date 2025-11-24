@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sgarg5858/swiggy-clone/issues"
   },
-  "homepage": "https://github.com/sgarg5858/swiggy-clone#readme"
+  "homepage": "https://github.com/sgarg5858/swiggy-clone#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  }
 }
