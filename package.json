@@ -1,0 +1,19 @@
+{
+  "name": "swiggy-clone",
+  "version": "1.0.0",
+  "description": "swiggy clone using react",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgarg5858/swiggy-clone.git"
+  },
+  "author": "sanjay garg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgarg5858/swiggy-clone/issues"
+  },
+  "homepage": "https://github.com/sgarg5858/swiggy-clone#readme"
+}
