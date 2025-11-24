@@ -2,7 +2,6 @@
   "name": "swiggy-clone",
   "version": "1.0.0",
   "description": "swiggy clone using react",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
