@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
-import { HeaderComponent } from "./Header";
-import { MainComponent } from "./Main";
-import { FooterComponent } from "./Footer";
+import { HeaderComponent } from "./components/Header";
+import { MainComponent } from "./components/Main";
+import FooterComponent from "./components/Footer";
 
 const AppComponent = () => {
   return (

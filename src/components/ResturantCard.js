@@ -1,3 +1,5 @@
+import { IMAGE_CDN_URL } from "../utils/image.constants";
+
 export const RestaurantCard = (props) => {
   const {
     data: {
@@ -11,9 +13,7 @@ export const RestaurantCard = (props) => {
       },
     },
   } = props;
-  const imageUrl =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-    cloudinaryImageId;
+  const imageUrl = IMAGE_CDN_URL + cloudinaryImageId;
   return (
     <div className="restaurant-card">
       <img className="restaurant-image" width={230} src={imageUrl} />

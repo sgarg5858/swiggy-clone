@@ -1,4 +1,4 @@
-export const resObj = [
+export const resturantList = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
     info: {

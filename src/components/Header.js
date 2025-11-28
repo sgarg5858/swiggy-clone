@@ -1,3 +1,5 @@
+import { LOGO_URL } from "../utils/image.constants";
+
 export const HeaderComponent = () => {
   return (
     <div className="header">
@@ -6,7 +8,7 @@ export const HeaderComponent = () => {
           className="logo"
           width={100}
           height={100}
-          src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/68044/optimized_product_thumb_stage.jpg"
+          src={LOGO_URL}
         />
       </div>
       <div className="nav-items">
