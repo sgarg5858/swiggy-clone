@@ -1,7 +1,6 @@
-import { RestaurantList } from "./ResturantList";
+import RestaurantList from "./ResturantList";
 
-
-export const MainComponent = () => {
+const MainComponent = () => {
   return (
     <div className="main">
       <div className="search">
@@ -12,3 +11,5 @@ export const MainComponent = () => {
     </div>
   );
 };
+
+export default MainComponent;

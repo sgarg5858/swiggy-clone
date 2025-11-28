@@ -1,6 +1,6 @@
 import { IMAGE_CDN_URL } from "../utils/image.constants";
 
-export const RestaurantCard = (props) => {
+const RestaurantCard = (props) => {
   const {
     data: {
       info: {
@@ -25,3 +25,5 @@ export const RestaurantCard = (props) => {
     </div>
   );
 };
+
+export default RestaurantCard;

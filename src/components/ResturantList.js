@@ -1,8 +1,7 @@
-
 import { resturantList } from "../mocks/resturant-list";
-import { RestaurantCard } from "./ResturantCard";
+import RestaurantCard from "./ResturantCard";
 
-export const RestaurantList = () => {
+const RestaurantList = () => {
   return (
     <div className="restaurant-list">
       {resturantList.map((restaurant) => (
@@ -11,3 +10,5 @@ export const RestaurantList = () => {
     </div>
   );
 };
+
+export default RestaurantList;
