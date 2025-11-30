@@ -27,6 +27,7 @@ const MainComponent = () => {
     }
   };
 
+  //Conditional rendering
   if(resturants.length === 0){
     return <Shimmer />;
   }
