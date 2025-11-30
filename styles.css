@@ -53,3 +53,11 @@
     padding: 10px;
     margin-top: 20px;
 }
+.filter-btn{
+    margin: 10px;
+    padding: 10px;
+    cursor:pointer
+}
+.resturants-heading{
+    text-align: center;
+}
