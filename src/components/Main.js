@@ -27,12 +27,7 @@ const MainComponent = () => {
     }
   };
 
-  //Conditional rendering
-  if(resturants.length === 0){
-    return <Shimmer />;
-  }
-
-  return (
+  return resturants.length === 0 ? <Shimmer /> : (
     <div className="main">
       <div className="filter">
         <button
