@@ -3,13 +3,27 @@ import RestaurantList from "./ResturantList";
 import Shimmer from "./Shimmer";
 
 const MainComponent = () => {
-  const [showTopRatedResturantsOnly, setShowTopRatedResturantsOnly] =
-    useState(false); 
   const [resturants, setResturants] = useState([]);
+  const [filteredRestaurants, setFilteredResturants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [showTopRatedResturantsOnly, setShowTopRatedResturantsOnly] =
+    useState(false);
 
   useEffect(() => {
     fetchRestaurants();
   }, []);
+
+  useEffect(() => {
+    const filtered = resturants?.filter((resturant) => {
+      return showTopRatedResturantsOnly
+        ? resturant.info.avgRating >= 4.5
+        : true &&
+            resturant.info.name
+              .toLowerCase()
+              .includes(searchText.toLowerCase());
+    });
+    setFilteredResturants(filtered);
+  }, [showTopRatedResturantsOnly, resturants, searchText]);
 
   const fetchRestaurants = async () => {
     try {
@@ -27,7 +41,9 @@ const MainComponent = () => {
     }
   };
 
-  return resturants.length === 0 ? <Shimmer /> : (
+  return resturants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="main">
       <div className="filter">
         <button
@@ -40,13 +56,23 @@ const MainComponent = () => {
             ? "Show All Resturants"
             : "Show Top Rated Resturants Only"}
         </button>
+
+        <div className="search-bar">
+          <input
+            type="search"
+            placeholder="Search Resturants..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
       </div>
       <h1 className="resturants-heading">
         {showTopRatedResturantsOnly ? "Top Rated" : "All Resturants"}
       </h1>
       <RestaurantList
-        resturants={resturants}
+        resturants={filteredRestaurants}
         topRatedOnly={showTopRatedResturantsOnly}
+        searchText={searchText}
       />
     </div>
   );

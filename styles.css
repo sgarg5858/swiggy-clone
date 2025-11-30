@@ -104,3 +104,16 @@
     background-color: lightgray;
     margin-bottom: 20px;
 }
+.filter{
+    display: flex;
+    justify-content: space-around;
+}
+.filter .search-bar{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+}
+.search-bar input[type="search"]{
+    height: 50px;
+    padding: 10px;
+}
