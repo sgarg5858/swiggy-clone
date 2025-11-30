@@ -61,3 +61,46 @@
 .resturants-heading{
     text-align: center;
 }
+
+
+.shimmer-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shimmer-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 25px;
+    width: 250px;
+    height: 400px;
+    background-color: whitesmoke;
+    align-items:flex-start ;
+}
+.shimmer-card div {
+    width: 200px;
+    height: 200px;
+    background-color: lightgray;
+    padding: 10px;
+    margin: 10px auto;
+}
+.shimmer-card h2,
+.shimmer-card h3,
+.shimmer-card h4,
+.shimmer-card h5,
+.shimmer-card h6 {
+    background-color: lightgray;
+    width: 150px;
+    padding: 10px;
+    margin: 10px auto;
+}
+.shimmer-header{
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: lightgray;
+    margin-bottom: 20px;
+}

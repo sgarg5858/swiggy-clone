@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import RestaurantList from "./ResturantList";
+import Shimmer from "./Shimmer";
 
 const MainComponent = () => {
   const [showTopRatedResturantsOnly, setShowTopRatedResturantsOnly] =
-    useState(false); // useState for tracking state
+    useState(false); 
   const [resturants, setResturants] = useState([]);
 
   useEffect(() => {
@@ -25,6 +26,10 @@ const MainComponent = () => {
       console.error("Error fetching restaurants:", error);
     }
   };
+
+  if(resturants.length === 0){
+    return <Shimmer />;
+  }
 
   return (
     <div className="main">
