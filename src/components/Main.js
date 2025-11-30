@@ -18,10 +18,7 @@ const MainComponent = () => {
       );
       const data = await response.json();
 
-      const cards = data?.data?.cards;
-      const resturantsData = cards.find((card) => {
-        return card.card.card.id === "restaurant_grid_listing_v2";
-      })?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const resturantsData = mapResturants(data);
 
       setResturants(resturantsData);
     } catch (error) {
@@ -46,9 +43,20 @@ const MainComponent = () => {
       <h1 className="resturants-heading">
         {showTopRatedResturantsOnly ? "Top Rated" : "All Resturants"}
       </h1>
-      <RestaurantList resturants={resturants} topRatedOnly={showTopRatedResturantsOnly} />
+      <RestaurantList
+        resturants={resturants}
+        topRatedOnly={showTopRatedResturantsOnly}
+      />
     </div>
   );
 };
 
 export default MainComponent;
+
+const mapResturants = (data) => {
+  const cards = data?.data?.cards;
+  const resturantsData = cards.find((card) => {
+    return card.card.card.id === "restaurant_grid_listing_v2";
+  })?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  return resturantsData || [];
+};
