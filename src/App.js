@@ -9,8 +9,6 @@ import { AboutComponent } from "./components/About";
 import { ErrorComponent } from "./components/Error";
 
 const AppComponent = () => {
-  console.log(<MainComponent />);
-  console.log(MainComponent());
   return (
     <div id="app" className="app">
       <HeaderComponent />

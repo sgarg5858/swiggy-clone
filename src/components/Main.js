@@ -10,12 +10,10 @@ const MainComponent = () => {
     useState(false);
 
   useEffect(() => {
-    console.log("Fetching resturants");
     fetchRestaurants();
   }, []);
 
   useEffect(() => {
-    console.log("Filtering resturants");
     if(resturants.length === 0){
       return;
     }
@@ -31,8 +29,6 @@ const MainComponent = () => {
 
     setFilteredResturants(filtered);
   }, [showTopRatedResturantsOnly, resturants, searchText]);
-
-  console.log(resturants,filteredRestaurants);
 
   const fetchRestaurants = async () => {
     try {
