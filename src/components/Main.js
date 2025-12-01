@@ -15,12 +15,13 @@ const MainComponent = () => {
 
   useEffect(() => {
     const filtered = resturants?.filter((resturant) => {
-      return showTopRatedResturantsOnly
+      const matchesRating = showTopRatedResturantsOnly
         ? resturant.info.avgRating >= 4.5
-        : true &&
-            resturant.info.name
-              .toLowerCase()
-              .includes(searchText.toLowerCase());
+        : true;
+      const matchesSearch = resturant.info.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+      return matchesRating && matchesSearch;
     });
     setFilteredResturants(filtered);
   }, [showTopRatedResturantsOnly, resturants, searchText]);
