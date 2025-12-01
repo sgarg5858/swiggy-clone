@@ -1,5 +1,5 @@
 import { LOGO_URL } from "../utils/image.constants";
-
+import { Link } from "react-router-dom";
 const HeaderComponent = () => {
   return (
     <div className="header">
@@ -8,9 +8,16 @@ const HeaderComponent = () => {
       </div>
       <nav className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            {" "}
+            <Link to="/"> Resturants</Link>
+          </li>
+          <li>
+            <Link to="/about"> About</Link>
+          </li>
+          <li>
+            <Link to="/contact"> Contact</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </nav>
