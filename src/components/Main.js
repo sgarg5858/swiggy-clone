@@ -10,21 +10,29 @@ const MainComponent = () => {
     useState(false);
 
   useEffect(() => {
+    console.log("Fetching resturants");
     fetchRestaurants();
   }, []);
 
   useEffect(() => {
+    console.log("Filtering resturants");
+    if(resturants.length === 0){
+      return;
+    }
     const filtered = resturants?.filter((resturant) => {
       const matchesRating = showTopRatedResturantsOnly
-        ? resturant.info.avgRating >= 4.5
+        ? resturant.info.avgRating > 4.2
         : true;
       const matchesSearch = resturant.info.name
         .toLowerCase()
         .includes(searchText.toLowerCase());
       return matchesRating && matchesSearch;
     });
+
     setFilteredResturants(filtered);
   }, [showTopRatedResturantsOnly, resturants, searchText]);
+
+  console.log(resturants,filteredRestaurants);
 
   const fetchRestaurants = async () => {
     try {
@@ -72,8 +80,6 @@ const MainComponent = () => {
       </h1>
       <RestaurantList
         resturants={filteredRestaurants}
-        topRatedOnly={showTopRatedResturantsOnly}
-        searchText={searchText}
       />
     </div>
   );
