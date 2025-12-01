@@ -10,7 +10,7 @@ const HeaderComponent = () => {
         <ul>
           <li>
             {" "}
-            <Link to="/"> Resturants</Link>
+            <Link to="/resturants"> Resturants</Link>
           </li>
           <li>
             <Link to="/about"> About</Link>
