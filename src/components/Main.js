@@ -33,7 +33,7 @@ const MainComponent = () => {
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(
-        "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.594566&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+        "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.1252438&lng=75.06111469999999&restaurantId=770772&catalog_qa=undefined&submitAction=ENTER",
         { headers: {} }
       );
       const data = await response.json();

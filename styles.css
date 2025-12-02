@@ -117,3 +117,28 @@
     height: 50px;
     padding: 10px;
 }
+.resturant-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu-item{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    padding: 50px;
+    margin: 20px;
+    align-items: center;
+    border: 1px solid gray;
+}
+.item-image
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.item-image button{
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
