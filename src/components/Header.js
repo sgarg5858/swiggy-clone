@@ -10,6 +10,10 @@ const HeaderComponent = () => {
         <ul>
           <li>
             {" "}
+            <Link to="/groceries"> Groceries</Link>
+          </li>
+          <li>
+            {" "}
             <Link to="/resturants"> Resturants</Link>
           </li>
           <li>
