@@ -1,33 +1,37 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "./api.constants";
 
+const fetchRestaurantMenu = async (id) => {
+  try {
+    const listRestaurantMenuResponse = await fetch(
+      API_URL + "listRestaurantMenu/" + id,
+      {
+        headers: {},
+      }
+    );
+    const listRestaurantMenuData = await listRestaurantMenuResponse.json();
+    const menuItems = getMenuItems(listRestaurantMenuData);
+    const resturantInfo = getResturantInfo(listRestaurantMenuData);
+    return { menuItems, resturantInfo };
+  } catch (error) {
+    console.log("Error fetching restaurant menu", error);
+  }
+};
+
 export const useResturantMenu = (id) => {
   const [resturantMenu, setResturantMenu] = useState(null);
   const [resturantInfo, setResturantInfo] = useState(null);
 
   useEffect(() => {
-    fetchRestaurantMenu();
-  }, []);
-
-  const fetchRestaurantMenu = async () => {
-    try {
-      const listRestaurantMenuResponse = await fetch(
-        API_URL + "listRestaurantMenu/" + id,
-        {
-          headers: {},
-        }
-      );
-      const listRestaurantMenuData = await listRestaurantMenuResponse.json();
-      const menuItems = getMenuItems(listRestaurantMenuData);
-      const resturantInfo = getResturantInfo(listRestaurantMenuData);
+    const loadRestaurantMenu = async () => {
+      const { menuItems, resturantInfo } = await fetchRestaurantMenu(id);
       setResturantMenu(menuItems);
       setResturantInfo(resturantInfo);
-    } catch (error) {
-      console.log("Error fetching restaurant menu", error);
-    }
-  };
+    };
+    loadRestaurantMenu();
+  }, []);
 
-  return { resturantMenu , resturantInfo };
+  return { resturantMenu, resturantInfo };
 };
 
 const getMenuItems = (resturantData) => {

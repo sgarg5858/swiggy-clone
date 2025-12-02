@@ -1,52 +1,20 @@
-import { useState, useEffect } from "react";
+import { useResturantList } from "../utils/useResturantList";
 import RestaurantList from "./ResturantList";
 import Shimmer from "./Shimmer";
 
 const MainComponent = () => {
-  const [resturants, setResturants] = useState([]);
-  const [filteredRestaurants, setFilteredResturants] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [showTopRatedResturantsOnly, setShowTopRatedResturantsOnly] =
-    useState(false);
+  const {
+    resturants,
+    filteredRestaurants,
+    searchText,
+    setSearchText,
+    showTopRatedResturantsOnly,
+    setShowTopRatedResturantsOnly,
+  } = useResturantList();
 
-  useEffect(() => {
-    fetchRestaurants();
-  }, []);
+  
 
-  useEffect(() => {
-    if(resturants.length === 0){
-      return;
-    }
-    const filtered = resturants?.filter((resturant) => {
-      const matchesRating = showTopRatedResturantsOnly
-        ? resturant.info.avgRating > 4.2
-        : true;
-      const matchesSearch = resturant.info.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
-      return matchesRating && matchesSearch;
-    });
-
-    setFilteredResturants(filtered);
-  }, [showTopRatedResturantsOnly, resturants, searchText]);
-
-  const fetchRestaurants = async () => {
-    try {
-      const response = await fetch(
-        "https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants",
-        { headers: {} }
-      );
-      const data = await response.json();
-
-      const resturantsData = mapResturants(data);
-
-      setResturants(resturantsData);
-    } catch (error) {
-      console.log("Error fetching restaurants:", error);
-    }
-  };
-
-  return resturants.length === 0 ? (
+  return resturants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="main">
@@ -74,20 +42,10 @@ const MainComponent = () => {
       <h1 className="resturants-heading">
         {showTopRatedResturantsOnly ? "Top Rated" : "All Resturants"}
       </h1>
-      <RestaurantList
-        resturants={filteredRestaurants}
-      />
+      <RestaurantList resturants={filteredRestaurants} />
     </div>
   );
 };
 
 export default MainComponent;
 
-const mapResturants = (data) => {
-  console.log(data);
-  const resturantsData = data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-  // const resturantsData = cards?.find((card) => {
-  //   return card.card.card.id === "restaurant_grid_listing_v2";
-  // })?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-  return resturantsData || [];
-};
