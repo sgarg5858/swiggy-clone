@@ -1,0 +1,1 @@
+export const API_URL = "https://corsproxy.io/?https://namastedev.com/api/v1/";

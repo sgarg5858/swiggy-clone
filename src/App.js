@@ -7,7 +7,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { ContactComponent } from "./components/Contact";
 import { AboutComponent } from "./components/About";
 import { ErrorComponent } from "./components/Error";
-import { ResturantMenu } from "./components/ResturantDetail";
+import { ResturantMenu } from "./components/ResturantMenu";
 
 const AppComponent = () => {
   return (
