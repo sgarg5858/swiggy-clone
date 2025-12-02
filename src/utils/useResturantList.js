@@ -1,21 +1,6 @@
 import { useState, useEffect } from "react";
-import { API_URL } from "./api.constants";
-
-const fetchRestaurants = async () => {
-  try {
-    const response = await fetch(API_URL + "listRestaurants", {
-      headers: {},
-    });
-    const data = await response.json();
-
-    const resturantsData = mapResturants(data);
-
-    return resturantsData;
-  } catch (error) {
-    console.log("Error fetching restaurants:", error);
-    return [];
-  }
-};
+import { fetchRestaurants } from "../data/resturants";
+import { filterResturant } from "../helpers/resturant";
 
 export const useResturantList = () => {
   const [resturants, setResturants] = useState([]);
@@ -33,18 +18,9 @@ export const useResturantList = () => {
   }, []);
 
   useEffect(() => {
-    if (resturants.length === 0) {
-      return;
-    }
-    const filtered = resturants?.filter((resturant) => {
-      const matchesRating = showTopRatedResturantsOnly
-        ? resturant.info.avgRating > 4.2
-        : true;
-      const matchesSearch = resturant.info.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
-      return matchesRating && matchesSearch;
-    });
+    const filtered = resturants?.filter((resturant) =>
+      filterResturant(showTopRatedResturantsOnly, resturant, searchText)
+    );
 
     setFilteredResturants(filtered);
   }, [showTopRatedResturantsOnly, resturants, searchText]);
@@ -59,10 +35,3 @@ export const useResturantList = () => {
   };
 };
 
-const mapResturants = (data) => {
-  console.log(data);
-  const resturantsData =
-    data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants;
-  return resturantsData || [];
-};
