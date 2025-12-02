@@ -27,25 +27,32 @@ export const ResturantMenu = () => {
 
   return (
     <div className="resturant-menu">
-      <h1>{resInfo?.data?.cards[2]?.card?.card?.info?.name}</h1>
-      <h2>
-        Cost for 2:{" "}
-        {resInfo?.data?.cards[2]?.card?.card?.info?.costForTwoMessage}
-      </h2>
-      <img
-        width={200}
-        height={200}
-        src={
-          IMAGE_CDN_URL +
-          resInfo?.data?.cards[2]?.card?.card?.info?.cloudinaryImageId
-        }
-        alt="Restaurant"
-      />
-      <h3>
-        Cuisines:{" "}
-        {resInfo?.data?.cards[2]?.card?.card?.info?.cuisines.join(", ")}
-      </h3>
-      <h3>Menu:</h3>
+      <div className="resturant-info">
+        <img
+          width={200}
+          height={200}
+          src={
+            IMAGE_CDN_URL +
+            resInfo?.data?.cards[2]?.card?.card?.info?.cloudinaryImageId
+          }
+          alt="Restaurant"
+        />
+
+        <div className="resturant-basic-details">
+          <h1>{resInfo?.data?.cards[2]?.card?.card?.info?.name}</h1>
+
+          <h2>
+            Cost for 2:{" "}
+            {resInfo?.data?.cards[2]?.card?.card?.info?.costForTwoMessage}
+          </h2>
+
+          <h3>
+            Cuisines:{" "}
+            {resInfo?.data?.cards[2]?.card?.card?.info?.cuisines.join(", ")}
+          </h3>
+        </div>
+      </div>
+
       <div className="menu-items">
         {menuItems?.map((item) => (
           <div key={item.card.info.id} className="menu-item">
@@ -54,14 +61,14 @@ export const ResturantMenu = () => {
               <h5>Price: ₹{item.card.info.price / 100}</h5>
               <p>{item.card.info.description}</p>
             </div>
-           <div className="item-image">
-             <img
-              width={200}
-              height={200}
-              src={IMAGE_CDN_URL + item.card.info.imageId}
-              alt="Restaurant"
-            />
-            <button>Add to cart</button>
+            <div className="item-image">
+              <img
+                width={200}
+                height={200}
+                src={IMAGE_CDN_URL + item.card.info.imageId}
+                alt="Restaurant"
+              />
+              <button>Add to cart</button>
             </div>
           </div>
         ))}
