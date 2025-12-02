@@ -33,7 +33,7 @@ const MainComponent = () => {
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(
-        "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.1252438&lng=75.06111469999999&restaurantId=770772&catalog_qa=undefined&submitAction=ENTER",
+        "https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurants",
         { headers: {} }
       );
       const data = await response.json();
@@ -42,7 +42,7 @@ const MainComponent = () => {
 
       setResturants(resturantsData);
     } catch (error) {
-      console.error("Error fetching restaurants:", error);
+      console.log("Error fetching restaurants:", error);
     }
   };
 
@@ -84,9 +84,10 @@ const MainComponent = () => {
 export default MainComponent;
 
 const mapResturants = (data) => {
-  const cards = data?.data?.cards;
-  const resturantsData = cards.find((card) => {
-    return card.card.card.id === "restaurant_grid_listing_v2";
-  })?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  console.log(data);
+  const resturantsData = data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  // const resturantsData = cards?.find((card) => {
+  //   return card.card.card.id === "restaurant_grid_listing_v2";
+  // })?.card?.card?.gridElements?.infoWithStyle?.restaurants;
   return resturantsData || [];
 };

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { IMAGE_CDN_URL } from "../utils/image.constants";
-
+import { Link, useParams } from "react-router-dom";
 export const ResturantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
+
+  const { id } = useParams();
 
   useEffect(() => {
     fetchRestaurantMenu();
@@ -11,7 +13,8 @@ export const ResturantMenu = () => {
   const fetchRestaurantMenu = async () => {
     try {
       const response = await fetch(
-        "https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurantMenu/123456",
+        "https://corsproxy.io/?https://namastedev.com/api/v1/listRestaurantMenu/" +
+          id,
         { headers: {} }
       );
       const data = await response.json();
@@ -27,6 +30,9 @@ export const ResturantMenu = () => {
 
   return (
     <div className="resturant-menu">
+      <div>
+        <Link to="/resturants">⬅️ Back to resturants</Link>
+      </div>
       <div className="resturant-info">
         <img
           width={200}
