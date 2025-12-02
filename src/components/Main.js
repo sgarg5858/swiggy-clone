@@ -1,3 +1,4 @@
+import useOnlineStatus from "../utils/useOlineStatuts";
 import { useResturantList } from "../utils/useResturantList";
 import RestaurantList from "./ResturantList";
 import Shimmer from "./Shimmer";
@@ -12,7 +13,14 @@ const MainComponent = () => {
     setShowTopRatedResturantsOnly,
   } = useResturantList();
 
-  
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are offline!! Please check your internet connection
+      </h1>
+    );
 
   return resturants?.length === 0 ? (
     <Shimmer />
@@ -48,4 +56,3 @@ const MainComponent = () => {
 };
 
 export default MainComponent;
-

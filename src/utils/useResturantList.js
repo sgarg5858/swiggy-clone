@@ -18,6 +18,10 @@ export const useResturantList = () => {
   }, []);
 
   useEffect(() => {
+    if (resturants.length === 0) {
+      return;
+    }
+    
     const filtered = resturants?.filter((resturant) =>
       filterResturant(showTopRatedResturantsOnly, resturant, searchText)
     );
