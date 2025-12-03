@@ -3,6 +3,17 @@ export const mapResturants = (data) => {
   const resturantsData =
     data?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
       ?.restaurants;
+  resturantsData.map((res, index) => {
+    const updatedRes = {
+      ...res,
+      info: {
+        ...res.info,
+        promoted: index % 2 === 0,
+      },
+    };
+    console.log(updatedRes);
+    return updatedRes;
+  });
   return resturantsData || [];
 };
 

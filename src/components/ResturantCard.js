@@ -11,6 +11,7 @@ const RestaurantCard = (props) => {
         sla: { deliveryTime },
         cloudinaryImageId,
         id,
+        promoted,
       },
     },
   } = props;
@@ -29,3 +30,14 @@ const RestaurantCard = (props) => {
 };
 
 export default RestaurantCard;
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <p className="promoted-label">Promoted</p>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};

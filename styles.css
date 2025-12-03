@@ -151,3 +151,12 @@
     padding: 10px;
     cursor: pointer;
 }
+.promoted-label {
+    position: relative;
+    margin: 25px;
+    padding: 10px;
+    top:50px;
+    color: white;
+    background-color: slateblue;
+    display: inline;
+}
