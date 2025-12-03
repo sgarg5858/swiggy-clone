@@ -32,7 +32,6 @@ export const getMenuSections = (resturantData) => {
           }),
         };
       });
-  console.log(menuSections);
   return menuSections;
 };
 

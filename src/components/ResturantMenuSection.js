@@ -6,7 +6,7 @@ export const ResturantMenuSection = (props) => {
   return (
     <div className="menu-section">
       <details>
-        <summary>{title}</summary>
+        <summary>{title} ({resturantMenuItems?.length})</summary>
         <div className="menu-items">
           {resturantMenuItems?.map((item) => (
             <ResturantMenuItem key={item.id} item={item} />
