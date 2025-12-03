@@ -1,4 +1,8 @@
-import { getMenuItems, getResturantInfo, mapResturants } from "../helpers/resturant";
+import {
+  getMenuSections,
+  getResturantInfo,
+  mapResturants,
+} from "../helpers/resturant";
 import { API_URL } from "../utils/api.constants";
 
 export const fetchRestaurants = async () => {
@@ -26,9 +30,9 @@ export const fetchRestaurantMenu = async (id) => {
       }
     );
     const listRestaurantMenuData = await listRestaurantMenuResponse.json();
-    const menuItems = getMenuItems(listRestaurantMenuData);
+    const menuSections = getMenuSections(listRestaurantMenuData);
     const resturantInfo = getResturantInfo(listRestaurantMenuData);
-    return { menuItems, resturantInfo };
+    return { menuSections, resturantInfo };
   } catch (error) {
     console.log("Error fetching restaurant menu", error);
   }

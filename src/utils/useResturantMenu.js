@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { fetchRestaurantMenu } from "../data/resturants";
 
 export const useResturantMenu = (id) => {
-  const [resturantMenu, setResturantMenu] = useState(null);
+  const [resturantMenuSections, setResturantMenuSections] = useState(null);
   const [resturantInfo, setResturantInfo] = useState(null);
 
   useEffect(() => {
     const loadRestaurantMenu = async () => {
-      const { menuItems, resturantInfo } = await fetchRestaurantMenu(id);
-      setResturantMenu(menuItems);
+      const { menuSections, resturantInfo } = await fetchRestaurantMenu(id);
+      setResturantMenuSections(menuSections);
       setResturantInfo(resturantInfo);
     };
     loadRestaurantMenu();
   }, []);
 
-  return { resturantMenu, resturantInfo };
+  return { resturantMenuSections, resturantInfo };
 };
 

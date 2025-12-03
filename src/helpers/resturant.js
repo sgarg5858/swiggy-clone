@@ -17,11 +17,23 @@ export const mapResturants = (data) => {
   return resturantsData || [];
 };
 
-export const getMenuItems = (resturantData) => {
-  const menuItems =
-    resturantData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
-      ?.card?.card?.itemCards;
-  return menuItems;
+export const getMenuSections = (resturantData) => {
+  const menuSections =
+    resturantData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+      ?.filter((section) =>
+        section?.card?.card?.["@type"]?.toLowerCase().includes("itemcategory")
+      )
+      .map((section) => {
+        const sectionInfo = section?.card?.card;
+        return {
+          ...sectionInfo,
+          itemCards: sectionInfo?.itemCards.map((itemCard) => {
+            return { ...itemCard?.card?.info };
+          }),
+        };
+      });
+  console.log(menuSections);
+  return menuSections;
 };
 
 export const getResturantInfo = (resturantData) => {

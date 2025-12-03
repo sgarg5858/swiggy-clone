@@ -160,3 +160,13 @@
     background-color: slateblue;
     display: inline;
 }
+.menu-section {
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    margin-top: 50px;
+    min-height: 100px;
+    border: 1px solid black;
+    padding: 20px;
+    
+}
