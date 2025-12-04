@@ -1,13 +1,16 @@
 import { IMAGE_CDN_URL } from "../utils/image.constants";
 import { useDispatch } from "react-redux";
-import { addItem } from "../store/cartSlice";
-export const ResturantMenuItem = ({ item }) => {
-
+import { addItem,removeItem } from "../store/cartSlice";
+export const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-  function addItemToCart()
-  {
-    dispatch(addItem(item))
+  function addItemToCart() {
+    dispatch(addItem(item));
   }
+
+   function removeItemFromCart() {
+    dispatch(removeItem(item));
+  }
+
 
   return (
     <div className="menu-item">
@@ -18,12 +21,16 @@ export const ResturantMenuItem = ({ item }) => {
       </div>
       <div className="item-image">
         <img
-          width={200}
-          height={200}
+          width={100}
+          height={100}
           src={IMAGE_CDN_URL + item?.imageId}
           alt="Restaurant"
         />
-        <button onClick={addItemToCart}>Add to cart</button>
+        <div>
+            <button onClick={removeItemFromCart}>-</button>
+            <strong>{item?.count}</strong>
+            <button onClick={addItemToCart}>+</button>
+        </div>
       </div>
     </div>
   );

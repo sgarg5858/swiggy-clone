@@ -10,6 +10,8 @@ import { ErrorComponent } from "./components/Error";
 import { ResturantMenu } from "./components/ResturantMenu";
 import UserContext from "./context/UserContext.js";
 import { Cart } from "./components/Cart.js";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore.js";
 
 const Grocery = lazy(() => import("./components/Grocery.js"));
 
@@ -25,11 +27,13 @@ const AppComponent = () => {
 
   return (
     <div id="app" className="app">
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <HeaderComponent />
-        <Outlet />
-        <FooterComponent />
-      </UserContext.Provider>
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+          <HeaderComponent />
+          <Outlet />
+          <FooterComponent />
+        </UserContext.Provider>
+      </Provider>
     </div>
   );
 };

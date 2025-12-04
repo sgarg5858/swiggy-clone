@@ -2,12 +2,17 @@ import { useContext, cont } from "react";
 import { LOGO_URL } from "../utils/image.constants";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
+import { useSelector } from "react-redux";
+
 const HeaderComponent = () => {
   const { loggedInUser, setUserName } = useContext(UserContext);
 
   function updateUserContext(event) {
     setUserName(event.target.value);
   }
+
+  const cart = useSelector((store) => store.cart.count);
+
   return (
     <div className="header">
       <div className="logo-container">
@@ -30,7 +35,7 @@ const HeaderComponent = () => {
             <Link to="/contact"> Contact</Link>
           </li>
           <li>
-            <Link to="/cart"> Cart</Link>
+            <Link to="/cart"> Cart ({cart})</Link>
           </li>
           <li>
             <input
