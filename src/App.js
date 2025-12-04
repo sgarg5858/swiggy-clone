@@ -9,6 +9,7 @@ import { AboutComponent } from "./components/About";
 import { ErrorComponent } from "./components/Error";
 import { ResturantMenu } from "./components/ResturantMenu";
 import UserContext from "./context/UserContext.js";
+import { Cart } from "./components/Cart.js";
 
 const Grocery = lazy(() => import("./components/Grocery.js"));
 
@@ -17,9 +18,9 @@ const AppComponent = () => {
 
   useEffect(() => {
     //some auth logic
-    setTimeout(()=>{
+    setTimeout(() => {
       setUserName("Sanjay");
-    },2000)
+    }, 2000);
   }, []);
 
   return (
@@ -49,6 +50,7 @@ const appRouter = createBrowserRouter([
       { path: "/resturants", element: <MainComponent /> },
       { path: "/contact", element: <ContactComponent /> },
       { path: "/about", element: <AboutComponent /> },
+      { path: "/cart", element: <Cart /> },
       {
         path: "/resturant/menu/:id",
         element: <ResturantMenu />,

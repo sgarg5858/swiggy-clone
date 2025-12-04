@@ -30,7 +30,7 @@ const HeaderComponent = () => {
             <Link to="/contact"> Contact</Link>
           </li>
           <li>
-            <p>Cart</p>
+            <Link to="/cart"> Cart</Link>
           </li>
           <li>
             <input
